@@ -1,0 +1,86 @@
+body {
+  background: url('https://www.transparenttextures.com/patterns/dark-stripes-light.png') #300078 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.08;
+  background-size: cover;
+}
+
+.page {
+  transition: all 0.5s;
+}
+
+:root {
+  --mantine-color-dark-6: #664e95 !important;
+}
+
+.squirc {
+  border-radius: 2rem !important;
+}
+
+@supports (corner-shape: squircle) {
+  .squirc {
+    border-radius: 4rem !important;
+    corner-shape: squircle;
+  }
+}
+
+.cardboard {
+  border: solid #ffffff39 3px !important;
+  transition: all 0.2s;
+  background-color: var(--mantine-color-dark-6);
+  user-select: none;
+  cursor: pointer;
+}
+
+.cardboard:hover {
+  transform: scale(1.02);
+  background-color: #664e95c2;
+}
+
+.title {
+    user-select: none !important;
+    font-family: "Fredoka", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@keyframes fadeUp {
+  0%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70%{
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUpBot {
+  0%{
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
