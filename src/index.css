@@ -1,7 +1,11 @@
 body {
-  background: url('https://www.transparenttextures.com/patterns/dark-stripes-light.png') #300078 !important;
+  background-color:  #1a0041 !important;
   position: relative;
   overflow: hidden;
+}
+
+.page {
+  background: url('https://www.transparenttextures.com/patterns/dark-stripes-light.png') !important;
 }
 
 body::before {
@@ -40,14 +44,14 @@ body::before {
 .cardboard {
   border: solid #ffffff39 3px !important;
   transition: all 0.2s;
-  background-color: var(--mantine-color-dark-6);
+  background-color: #664e95d1 !important;
   user-select: none;
   cursor: pointer;
 }
 
 .cardboard:hover {
   transform: scale(1.02);
-  background-color: #664e95c2;
+  background-color: #664e95a2 !important;
 }
 
 .title {

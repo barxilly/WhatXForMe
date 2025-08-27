@@ -4,6 +4,7 @@ import {
   Card,
   Center,
   createTheme,
+  Flex,
   Grid,
   Image,
   Loader,
@@ -20,12 +21,14 @@ import { GiFlowerEmblem } from "react-icons/gi";
 function App() {
   const [titleWord, setTitleWord] = useState("X");
   const [isLoading, setIsLoading] = useState(true);
-  const [currentScreen, setCurrentScreen] = useState(isLoading ? "loading" : "start");
+  const [currentScreen, setCurrentScreen] = useState(
+    isLoading ? "loading" : "start"
+  );
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     setAnimate(true);
-    const timeout = setTimeout(() => setAnimate(false),100);
+    const timeout = setTimeout(() => setAnimate(false), 100);
     return () => clearTimeout(timeout);
   }, [titleWord]);
 
@@ -61,12 +64,12 @@ function App() {
   useEffect(() => {
     const words = ["Phone", "Laptop", "Headphones", "Console"];
     setTitleWord((prevWord) => {
-        let newWord;
-        do {
-          newWord = words[Math.floor(Math.random() * words.length)];
-        } while (newWord === prevWord && words.length > 1);
-        return newWord;
-      });
+      let newWord;
+      do {
+        newWord = words[Math.floor(Math.random() * words.length)];
+      } while (newWord === prevWord && words.length > 1);
+      return newWord;
+    });
     const interval = setInterval(() => {
       setTitleWord((prevWord) => {
         let newWord;
@@ -103,15 +106,18 @@ function App() {
 
   return (
     <MantineProvider defaultColorScheme="dark">
-    <style>
-      {`
+      <style>
+        {`
       #rain::before {
-        background: linear-gradient(to right, #ff0400, #ff8800, #ffdd00, #0dff00, #26c6da, #0088ff, #5100ff, #e700fc, #ff2268);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        
         content: attr(data-content);
         transition: all 1s ease;
       }
+        #rain{
+        color: #9977ddb4;}
+        #rain:hover{
+        color: #9977ddff !important;
+        }
       .fadeUp {
         animation: fadeUp 0.3s forwards;
       }
@@ -120,7 +126,7 @@ function App() {
         100% { opacity: 1; transform: translateY(0); }
       }
       `}
-    </style>
+      </style>
       {window.innerWidth < 575 ? <Space h="65vh" /> : ""}
       <Center
         id="loadingpage"
@@ -159,7 +165,13 @@ function App() {
             unselectable="off"
             style={{ textAlign: "center", fontSize: "4.2em" }}
           >
-            What <span id="rain" data-content={titleWord} className={animate ? "fadeUp" : ""} /> For Me
+            What{" "}
+            <span
+              id="rain"
+              data-content={titleWord}
+              className={animate ? "fadeUp" : ""}
+            />{" "}
+            For Me
           </Title>
           <Space h="md" />
           <Grid w="70vw">
@@ -190,7 +202,8 @@ function App() {
           </Grid>
         </Stack>
       </Center>
-      <Center
+
+      <Grid
         id="phonepage"
         className="page"
         h="100vh"
@@ -203,11 +216,42 @@ function App() {
         pos="absolute"
         top={0}
         left={0}
-      ></Center>
+      >
+        <Grid.Col span={{ md: 6 }} h="86vh">
+          <Stack h="100%" m="2em">e</Stack>
+        </Grid.Col>
+        <Grid.Col span={{ md: 6 }} h="86vh">
+          <Card bg="#978a9dc1" bd="solid #ffffff39 3px" h="100%" m="2em"><Center h="100%" w="100%">
+            <Stack align="center">
+              <Title>iPhone 16</Title>
+              <Image w="80%" src="https://www.ee.co.uk/content/dam/ee/products/mobile/apple/iphone-16/device/apple-iphone-16-ultramarine-488x488.webp"/>
+            </Stack></Center>
+          </Card>
+        </Grid.Col>
+      </Grid>
 
-      <Center h="5em" w="100vw" pos="fixed" bottom={0}>
-        By&nbsp;<a href="https://benjs.uk/">BenJS</a>&nbsp;- 2025<br/>
-        <a href="https://"></a>
+      <Center
+        h="3em"
+        w="100vw"
+        pos="fixed"
+        bottom="1.2em"
+        style={{ zIndex: 2 }}
+      >
+        <Stack gap={0}>
+          <div>
+            By&nbsp;<a href="https://benjs.uk/">BenJS</a>&nbsp;- 2025
+          </div>
+          <Space h="0.5em" />
+          <div>
+            <a href="https://ko-fi.com/sillysbs" target="_blank">
+              <Image
+                h="1.5em"
+                w="auto"
+                src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_dark.png"
+              />
+            </a>
+          </div>
+        </Stack>
       </Center>
     </MantineProvider>
   );
